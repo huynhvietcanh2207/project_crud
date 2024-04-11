@@ -130,10 +130,9 @@ class CrudUserController extends Controller
      */
     public function postUpdateUser(Request $request)
 {
-    // Lấy input từ request
+    // lấy input từ request
     $input = $request->all();
 
-    // Validate dữ liệu nhập vào
     $request->validate([
         'name' => 'required',
         'email' => 'required|email|unique:users,email,' . $input['id'],
@@ -144,23 +143,22 @@ class CrudUserController extends Controller
 
     $user = User::find($input['id']);
 
-    // Cập nhật thông tin user
+    // update user
     $user->name = $input['name'];
     $user->email = $input['email'];
     $user->password = $input['password'];
     $user->phone_number = $input['phone_number'];
 
-    // Kiểm tra xem người dùng đã tải lên hình ảnh mới chưa
+    // kiểm tra tải lên hình ảnh chưa ấy
     if ($request->hasFile('profile_image')) {
-        // Ghi lại dữ liệu nhị phân từ hình ảnh và lưu trữ vào cột 'profile_image'
+        //ghi dữ liệu ở database ấy vào cột 'profile_image'
         $imageContent = file_get_contents($request->file('profile_image')->path());
         $user->profile_image = $imageContent; // Sửa lại tên cột thành 'profile_image'
     }
 
-    // Lưu thông tin user vào cơ sở dữ liệu
+    // Lưu 
     $user->save();
 
-    // Redirect về trang danh sách users và hiển thị thông báo thành công
     return redirect("list")->withSuccess('You have signed-in');
 }
 
