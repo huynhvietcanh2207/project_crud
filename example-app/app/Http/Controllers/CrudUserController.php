@@ -54,11 +54,11 @@ class CrudUserController extends Controller
     }
 
 
-   
-    
-    
-    
-    
+
+
+
+
+
     /**
      * User submit form register
      */
@@ -71,10 +71,10 @@ class CrudUserController extends Controller
             'phone_number' => 'nullable|numeric',
             'profile_image' => 'required|image',
         ]);
-    
+
         // ghi lại dữ liệu nhị phân từ hình ảnh nha và lưu trữ vào cột 'profile_image'
         $imageContent = file_get_contents($request->file('profile_image')->path());
-    
+
         // Tạo một bản ghi mới trong bảng 'users'
         $check = User::create([
             'name' => $request->name,
@@ -83,11 +83,11 @@ class CrudUserController extends Controller
             'phone_number' => $request->phone_number,
             'profile_image' => $imageContent,
         ]);
-    
+
         return redirect("login");
     }
-    
-    
+
+
 
 
 
@@ -129,23 +129,43 @@ class CrudUserController extends Controller
      * Submit form update user
      */
     public function postUpdateUser(Request $request)
-    {
-        $input = $request->all();
+{
+    // Lấy input từ request
+    $input = $request->all();
 
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,id,' . $input['id'],
-            'password' => 'required|min:6',
-        ]);
+    // Validate dữ liệu nhập vào
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email,' . $input['id'],
+        'password' => 'required|min:6',
+        'phone_number' => 'nullable|numeric',
+        'profile_image' => 'nullable|image',
+    ]);
 
-        $user = User::find($input['id']);
-        $user->name = $input['name'];
-        $user->email = $input['email'];
-        $user->password = $input['password'];
-        $user->save();
+    $user = User::find($input['id']);
 
-        return redirect("list")->withSuccess('You have signed-in');
+    // Cập nhật thông tin user
+    $user->name = $input['name'];
+    $user->email = $input['email'];
+    $user->password = $input['password'];
+    $user->phone_number = $input['phone_number'];
+
+    // Kiểm tra xem người dùng đã tải lên hình ảnh mới chưa
+    if ($request->hasFile('profile_image')) {
+        // Ghi lại dữ liệu nhị phân từ hình ảnh và lưu trữ vào cột 'profile_image'
+        $imageContent = file_get_contents($request->file('profile_image')->path());
+        $user->profile_image = $imageContent; // Sửa lại tên cột thành 'profile_image'
     }
+
+    // Lưu thông tin user vào cơ sở dữ liệu
+    $user->save();
+
+    // Redirect về trang danh sách users và hiển thị thông báo thành công
+    return redirect("list")->withSuccess('You have signed-in');
+}
+
+    
+
 
     /**
      * List of users
@@ -153,7 +173,10 @@ class CrudUserController extends Controller
     public function listUser()
     {
         if (Auth::check()) {
-            $users = User::all();
+            //Số lượng người dùng trên mỗi trang
+            $perpage = 3;
+            //Lấy danh sách người dùng được phân trang
+            $users = User::paginate($perpage);
             return view('crud_user.list', ['users' => $users]);
         }
 

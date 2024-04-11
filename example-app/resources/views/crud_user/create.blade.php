@@ -1,3 +1,8 @@
+<style>
+    main{
+        min-height: 80vh;
+    }
+</style>
 @extends('dashboard')
 
 @section('content')
@@ -5,8 +10,8 @@
         <div class="cotainer">
             <div class="row justify-content-center">
                 <div class="col-md-4 pt-5">
-                    <div class="card">
-                        <h3 class="card-header text-center text-danger">Đăng ký</h3>
+                    <div class="card" style="border: 2px solid black;">
+                        <h3 class="card-header text-center text-danger" style="font-size: 50px; margin-bottom:20px;">Đăng ký</h3>
                         <div class="card-body">
                             <form action="{{ route('user.postUser') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -38,14 +43,14 @@
                                     @endif
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="profile_image">Profile Image (Optional):</label>
+                                    <label for="profile_image">Vui Lòng Chọn Hình Ảnh:</label>
                                     <input type="file" name="profile_image" id="profile_image" class="form-control">
                                     @if ($errors->has('profile_image'))
                                         <span class="text-danger">{{ $errors->first('profile_image') }}</span>
                                     @endif
                                 </div>
                                 <div class="d-grid mx-auto">
-                                    <button type="submit" class="btn btn-dark btn-block">Submit</button>
+                                    <button type="submit"  style="background-color: aqua; width:200px; margin-left: 200px" class="btn btn-dark btn-block">Đăng Ký</button>
                                 </div>
                             </form>
                         </div>
@@ -54,4 +59,9 @@
             </div>
         </div>
     </main>
+    <footer class="py-5 bg-dark">
+                <div class="container">
+                    <p class="m-0 text-center text-white">Lập trình web @ 01/2024</p>
+                </div>
+            </footer>
 @endsection

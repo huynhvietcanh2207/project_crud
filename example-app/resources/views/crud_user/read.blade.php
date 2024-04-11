@@ -1,33 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/view.css">
+    <title>Document</title>
+    <style>
+        .khung {
+            justify-content: center;
+            margin: 50px 400px;
+            border: 5px solid black;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: brown;
+            padding: 10px;
+        }
+
+        .small {
+            margin: 0px 40px 0 50px;
+
+        }
+
+
+        .btn {
+            width: 100px;
+            height: 50px;
+            background-color: aqua;
+            margin: 30px 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
 @extends('dashboard')
 
 @section('content')
-<!-- <main class="login-form">
-        <div class="container">
-            <div class="row justify-content-center">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{$messi->id}}</td>
-                            <td>{{$messi->name}}</td>
-                            <td>{{$messi->email}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </main> -->
+
 
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6">
+            <div class="khung col-md-6">
                 <h1 class="display-5 fw-bolder">Màn hình chi tiết</h1>
                 <table>
                     <tr>
@@ -66,18 +87,22 @@
                             @endif
                         </td>
                     </tr>
-
-
-
                 </table>
                 <div class="d-flex">
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <button class="btn btn-outline-dark " type="button">
                         <i class="bi-cart-fill me-1"></i>
                         chỉnh sửa
                     </button>
                 </div>
             </div>
+
         </div>
+
     </div>
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Lập trình web @ 01/2024</p>
+        </div>
+    </footer>
 </section>
 @endsection
