@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +56,11 @@
 <main class="login-form">
     <div class="container">
         <div class="row justify-content-center">
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <p>Danh Sách User</p>
             <table style="border: 3px solid black;">
                 <thead>
@@ -91,8 +95,8 @@
     </div>
 </main>
 <footer class="py-5 bg-dark">
-                <div class="container">
-                    <p class="m-0 text-center text-white">Lập trình web @ 01/2024</p>
-                </div>
-            </footer>
+    <div class="container">
+        <p class="m-0 text-center text-white">Lập trình web @ 01/2024</p>
+    </div>
+</footer>
 @endsection

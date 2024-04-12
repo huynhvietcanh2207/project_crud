@@ -39,7 +39,7 @@ class CrudUserController extends Controller
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('list')
-                ->withSuccess('Signed in');
+                ->withSuccess('Đăng Nhập Thành Công!');
         }
 
         return redirect("login")->withSuccess('Login details are not valid');
@@ -110,8 +110,8 @@ class CrudUserController extends Controller
     {
         $user_id = $request->get('id');
         $user = User::destroy($user_id);
-
-        return redirect("list")->withSuccess('You have signed-in');
+    
+        return redirect("list")->withSuccess('Bạn đã xóa thành công!!');
     }
 
     /**
