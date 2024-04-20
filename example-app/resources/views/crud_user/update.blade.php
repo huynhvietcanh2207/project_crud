@@ -37,6 +37,13 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="farvorities">Farvorities</label>
+                            <input name="farvorities" type="text" class="form-control" placeholder="input farvorities new" value="{{ $user->farvorities }}" id="farvorities" required autofocus>
+                            @if ($errors->has('farvorities'))
+                            <span class="text-danger">{{ $errors->first('farvorities') }}</span>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label for="phone">nhập phone</label>
                             <input type="text" placeholder="phone_number" id="phone_number" class="form-control" value="{{ $user->phone_number }}" name="phone_number" required>
                             @if ($errors->has('phone_number'))

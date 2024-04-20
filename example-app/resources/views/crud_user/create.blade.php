@@ -37,6 +37,13 @@
                                     @endif
                                 </div>
                                 <div class="form-group mb-3">
+                                    <input type="text" placeholder="farvorities" id="farvorities" class="form-control" name="farvorities"
+                                           required autofocus>
+                                    @if ($errors->has('farvorities'))
+                                        <span class="text-danger">{{ $errors->first('farvorities') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group mb-3">
                                     <input type="text" placeholder="Phone Number" id="phone_number" class="form-control" name="phone_number">
                                      @if ($errors->has('phone_number'))
                                         <span class="text-danger">{{ $errors->first('phone_number') }}</span>

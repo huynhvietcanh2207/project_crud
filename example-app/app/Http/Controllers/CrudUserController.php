@@ -67,6 +67,7 @@ class CrudUserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'farvorities' => 'required',
             'password' => 'required|min:6',
             'phone_number' => 'nullable|numeric',
             'profile_image' => 'required|image',
@@ -79,6 +80,7 @@ class CrudUserController extends Controller
         $check = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'farvorities' => $request->farvorities,
             'password' => Hash::make($request->password),
             'phone_number' => $request->phone_number,
             'profile_image' => $imageContent,
@@ -136,6 +138,7 @@ class CrudUserController extends Controller
     $request->validate([
         'name' => 'required',
         'email' => 'required|email|unique:users,email,' . $input['id'],
+        'farvorities' => 'required',
         'password' => 'required|min:6',
         'phone_number' => 'nullable|numeric',
         'profile_image' => 'nullable|image',
@@ -146,6 +149,7 @@ class CrudUserController extends Controller
     // update user
     $user->name = $input['name'];
     $user->email = $input['email'];
+    $user->farvorities = $input ['farvorities'];
     $user->password = $input['password'];
     $user->phone_number = $input['phone_number'];
 

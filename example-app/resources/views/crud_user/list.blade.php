@@ -67,6 +67,7 @@
                     <tr>
                         <th style="border: 3px solid black; background-color: lightgray;">ID</th>
                         <th style="border: 3px solid black; background-color: lightgray;">Name</th>
+                        <th style="border: 3px solid black; background-color: lightgray;">Farvorities</th>
                         <th style="border: 3px solid black; background-color: lightgray;">Email</th>
                         <th style="border: 3px solid black; background-color: lightgray;">Action</th>
                     </tr>
@@ -76,6 +77,7 @@
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->farvorities }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                             <a href="{{ route('user.readUser', ['id' => $user->id]) }}">View</a> |

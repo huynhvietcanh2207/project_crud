@@ -69,6 +69,14 @@
                     </tr>
                     <tr>
                         <td>
+                            <div class="small mb-1">Farvorities: </div>
+                        </td>
+                        <td>
+                            <h3 class="">{{$messi->farvorities}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <div class="small mb-1">Phone Number: </div>
                         </td>
                         <td>
